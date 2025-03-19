@@ -1,0 +1,42 @@
+{
+  "name": "hedera-mirrornode-ts",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "rslib build",
+    "check": "biome check --write",
+    "dev": "rslib build --watch",
+    "format": "biome format --write",
+    "format:git": "biome format --no-errors-on-unmatched --files-ignore-unknown=true  --staged  *.{js,ts,cjs,mjs,d.ts,d.cts,d.mts,jsx,tsx,json,jsonc} --write",
+    "test": "vitest run",
+    "rslib": "rslib"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@rslib/core": "^0.5.4",
+    "@types/node": "^22.8.1",
+    "lefthook": "^1.11.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  },
+  "private": true,
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "core-js",
+      "esbuild",
+      "lefthook"
+    ]
+  }
+}
