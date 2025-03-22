@@ -8,6 +8,10 @@ export default defineConfig({
       dts: true,
       // bundle: false,
     },
+    {
+      format: "cjs",
+      syntax: "es2021",
+    },
   ],
   // source: {
   //   entry: {
