@@ -12,9 +12,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "package": "rslib build",
     "build": "rslib build",
@@ -36,7 +34,6 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.8"
   },
-  "private": true,
   "pnpm": {
     "onlyBuiltDependencies": [
       "@biomejs/biome",
