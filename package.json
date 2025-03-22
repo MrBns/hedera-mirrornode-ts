@@ -12,22 +12,28 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "package": "rslib build",
     "build": "rslib build",
     "check": "biome check --write",
     "dev": "rslib build --watch",
     "format": "biome format --write",
     "format:git": "biome format --no-errors-on-unmatched --files-ignore-unknown=true  --staged  *.{js,ts,cjs,mjs,d.ts,d.cts,d.mts,jsx,tsx,json,jsonc} --write",
     "test": "vitest run",
+    "test:dev": "vitest dev ",
     "rslib": "rslib"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@rslib/core": "^0.5.4",
     "@types/node": "^22.8.1",
+    "@vitest/ui": "3.0.9",
     "lefthook": "^1.11.3",
     "typescript": "^5.8.2",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.8"
   },
   "private": true,

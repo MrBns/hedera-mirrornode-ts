@@ -1,7 +1,7 @@
 /**
  * Nft
  */
-export interface MirrorNodeNft {
+export interface TMirrorNodeNFT {
   account_id: string;
   created_timestamp: string;
   delegating_spender?: null | string;
@@ -9,7 +9,6 @@ export interface MirrorNodeNft {
    * whether the nft or the token it belongs to has been deleted
    */
   deleted: boolean;
-
   /**
    * Arbitrary binary data associated with this NFT encoded in base64.
    */

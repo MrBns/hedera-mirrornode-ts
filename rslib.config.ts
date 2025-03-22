@@ -6,10 +6,12 @@ export default defineConfig({
       format: "esm",
       syntax: "es2021",
       dts: true,
-    },
-    {
-      format: "cjs",
-      syntax: "es2021",
+      // bundle: false,
     },
   ],
+  // source: {
+  //   entry: {
+  //     index: ["./src/**", "!src/**/*.test.ts"],
+  //   },
+  // },
 });

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["ES2021"],
+    "target": "ES2015",
     "module": "ESNext",
     "noEmit": true,
     "strict": true,
@@ -9,7 +10,11 @@
     "resolveJsonModule": true,
     "moduleResolution": "bundler",
     "useDefineForClassFields": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "helper/*": ["./src/helper/*"],
+      "types/*": ["./src/types/*"]
+    }
   },
   "include": ["src"]
 }
