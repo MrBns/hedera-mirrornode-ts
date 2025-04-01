@@ -15,6 +15,7 @@
   "files": ["dist"],
   "scripts": {
     "package": "rslib build",
+    "t:package": "rslib build",
     "build": "rslib build",
     "check": "biome check --write",
     "dev": "rslib build --watch",
