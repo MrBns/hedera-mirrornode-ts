@@ -4,15 +4,11 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "default": "./src/index.ts"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "scripts": {
     "package": "rslib build",
     "t:package": "rslib build",

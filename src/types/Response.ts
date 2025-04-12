@@ -1,4 +1,5 @@
 export type TMirrorNodeResponse<T> =
+  | T
   | {
       _status: {
         messages?: {
@@ -16,5 +17,4 @@ export type TMirrorNodeResponse<T> =
           message?: string;
         }[];
       };
-    }
-  | T;
+    };

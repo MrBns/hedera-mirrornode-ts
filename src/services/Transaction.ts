@@ -1,17 +1,16 @@
 import {
   QueryOptionBuilder,
-  UrlSearchParamsInit,
   type QueryOptions,
-} from "helper/query_options";
-import type { TMirrorNodeBadResponse } from "types/BadRequest";
-import type { TMirrorNodeResponseLinks } from "types/Links";
-import type { TMirrorNodeResponse } from "types/Response";
+  UrlSearchParamsInit,
+} from "../helper/query_options";
 import type {
   TMirrorNodeBalanceModificationType,
+  TMirrorNodeResponseLinks,
   TMirrorNodeTransaction,
   TMirrorNodeTransactionDetails,
   TMirrorNodeTransactionTypes,
-} from "types/Transaction";
+} from "../types";
+import type { TMirrorNodeResponse } from "../types/Response";
 
 /* ==============================
  Get Transaction List
