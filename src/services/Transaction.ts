@@ -1,7 +1,7 @@
 import {
   QueryOptionBuilder,
   type QueryOptions,
-  UrlSearchParamsInit,
+  type UrlSearchParamsInit,
 } from "../helper/query_options";
 import type {
   TMirrorNodeBalanceModificationType,
