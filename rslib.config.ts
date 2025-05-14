@@ -13,6 +13,15 @@ export default defineConfig({
       syntax: "es2021",
     },
   ],
+  output: {
+    minify: {
+      js: true,
+      css: true,
+    },
+    distPath: {
+      root: "./publish/dist",
+    },
+  },
   // source: {
   //   entry: {
   //     index: ["./src/**", "!src/**/*.test.ts"],

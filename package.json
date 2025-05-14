@@ -12,7 +12,7 @@
   "scripts": {
     "package": "rslib build",
     "t:package": "rslib build",
-    "build": "rslib build",
+    "build": "node ./script/build.js",
     "check": "biome check --write",
     "dev": "rslib build --watch",
     "format": "biome format --write",

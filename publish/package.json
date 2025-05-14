@@ -1,0 +1,31 @@
+{
+  "name": "@mrbns/hedera-mirrornode-ts",
+  "version": "0.0.2-alpha-1",
+  "description": "TypeScript SDK for Hedera Mirror Node APIs.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrbns/hedera-mirrornode-ts.git"
+  },
+  "files": ["./dist/", "./README.md"],
+  "scripts": {
+    "dev": "rslib build --watch",
+    "rslib": "rslib"
+  },
+  "author": {
+    "name": "Mr Binary Siper <@mrbns>",
+    "email": "hi@mrbns.dev",
+    "url": "https://mrbns.dev"
+  },
+  "keywords": ["hedera", "hedera-mirrornode", "hedera-sdk"]
+}
