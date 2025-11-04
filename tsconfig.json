@@ -10,7 +10,16 @@
     "resolveJsonModule": true,
     "moduleResolution": "bundler",
     "useDefineForClassFields": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "declaration": true,
+    "declarationMap": true,
+    "paths": {
+      "@sdk/*": ["./src/sdk", "./src/sdk/*"],
+      "$types": ["./src/types"],
+      "$types/*": ["./src/types/*"],
+      "@helper": ["./src/helper"],
+      "@helper/*": ["./src/helper/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src/**/*", "/tests/**/*"]
 }

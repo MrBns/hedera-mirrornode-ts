@@ -5,6 +5,14 @@
   "exports": {
     ".": {
       "default": "./src/index.ts"
+    },
+    "./types": {
+      "types": "./src/types/index.ts",
+      "default": "./src/types/index.ts"
+    },
+    "./openapi": {
+      "types": null,
+      "default": null
     }
   },
   "main": "./src/index.ts",
@@ -13,23 +21,27 @@
     "package": "rslib build",
     "t:package": "rslib build",
     "build": "node ./script/build.js",
+    "gen:openapi-types": "openapi --input ./src/openapi/openapi.yml --output ./src/openapi/types --useUnionTypes --exportCore false --exportServices false",
     "check": "biome check --write",
     "dev": "rslib build --watch",
     "format": "biome format --write",
     "format:git": "biome format --no-errors-on-unmatched --files-ignore-unknown=true  --staged  *.{js,ts,cjs,mjs,d.ts,d.cts,d.mts,jsx,tsx,json,jsonc} --write",
     "test": "vitest run",
     "test:dev": "vitest dev ",
-    "rslib": "rslib"
+    "rslib": "rslib",
+    "test:browser": "vitest --config=vitest.browser.config.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@rslib/core": "^0.5.4",
     "@types/node": "^22.8.1",
+    "@vitest/browser-playwright": "^4.0.6",
     "@vitest/ui": "3.0.9",
     "lefthook": "^1.11.3",
+    "openapi-typescript-codegen": "^0.29.0",
     "typescript": "^5.8.2",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.0.8"
+    "vitest": "^4.0.6"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -38,5 +50,8 @@
       "esbuild",
       "lefthook"
     ]
+  },
+  "dependencies": {
+    "@hey-api/openapi-ts": "^0.86.11"
   }
 }

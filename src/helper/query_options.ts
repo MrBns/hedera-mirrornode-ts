@@ -1,30 +1,24 @@
-import { configByNetworks, type TNetworks } from "../networks";
+import { type HederaNetworks, configByNetworks } from "../networks";
 
-export type UrlSearchParamsInit =
-  | URLSearchParams
-  | string
-  | Record<string, boolean | number | string | readonly string[]>
-  | Iterable<[string, string]>
-  | ReadonlyArray<[string, string]>
-  | undefined;
-
-export type QueryOptions<Query = UrlSearchParamsInit, Paylod = unknown> = {
+export type QueryOptions<Query = object, Paylod = unknown> = {
   query?: Query;
-  network?: TNetworks;
+  network?: HederaNetworks;
   payload?: Paylod;
   requestOptions?: RequestInit;
 };
 
-export class QueryOptionBuilder<Payload = unknown> {
+export class QueryOptionBuilder<Query = object, Payload = unknown> {
   #query?: URLSearchParams;
-  network: TNetworks = "mainnet";
+  network: HederaNetworks = "mainnet";
   #payload?: Payload;
+  requestOption: RequestInit;
 
-  constructor(options: QueryOptions<UrlSearchParamsInit, Payload>) {
+  constructor(options?: QueryOptions<Query, Payload>) {
     // @ts-ignore
-    this.#query = new URLSearchParams(options.query);
-    this.network = options.network || "mainnet";
+    this.#query = this.#makeQueryFromObject(options?.query || {});
+    this.network = options?.network || "mainnet";
     this.#payload = this.#payload;
+    this.requestOption = options?.requestOptions || {};
   }
 
   getQueryString() {
@@ -34,21 +28,42 @@ export class QueryOptionBuilder<Payload = unknown> {
     return "";
   }
 
-  getPayload() {
-    if (!this.#payload) {
-      return "";
-    } else if (typeof this.#payload === "string") {
-      return this.#payload;
-    } else if (
-      typeof this.#payload === "number" ||
-      typeof this.#payload === "bigint"
-    ) {
-      return this.#payload;
-    } else if (typeof this.#payload === "function") {
-      return "";
-    } else {
-      return JSON.stringify(this.#payload);
+  #makeQueryFromObject(obj: object): URLSearchParams {
+    const urlParams = new URLSearchParams();
+
+    function parse(_obj: object) {
+      const queue = [_obj];
+      while (queue.length > 0) {
+        const currentObj = queue.shift();
+        if (currentObj === undefined) continue;
+
+        for (const [key, val] of Object.entries(currentObj)) {
+          if (typeof val === "object" && val !== null && !Array.isArray(val)) {
+            queue.push(val);
+          } else {
+            urlParams.append(key, String(val));
+          }
+        }
+      }
     }
+
+    // // initital call;
+    // parse(obj);
+    parse(obj);
+
+    return urlParams;
+  }
+
+  getPayload() {
+    const p = this.#payload;
+    const t = typeof p;
+
+    // if null or function return ""
+    if (p == null || t === "function") return "";
+
+    if (t === "string" || t === "number" || t === "bigint") return p;
+
+    return JSON.stringify(p);
   }
 
   apiBase() {

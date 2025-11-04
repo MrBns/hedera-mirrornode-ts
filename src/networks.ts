@@ -18,4 +18,4 @@ export const configByNetworks = {
   },
 } as const;
 
-export type TNetworks = keyof typeof networks;
+export type HederaNetworks = keyof typeof networks;

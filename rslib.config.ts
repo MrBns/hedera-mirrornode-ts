@@ -22,9 +22,10 @@ export default defineConfig({
       root: "./publish/dist",
     },
   },
-  // source: {
-  //   entry: {
-  //     index: ["./src/**", "!src/**/*.test.ts"],
-  //   },
-  // },
+  source: {
+    entry: {
+      index: "./src/index.ts",
+      "sdk/index": "./src/sdk/index.ts",
+    },
+  },
 });
