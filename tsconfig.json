@@ -14,7 +14,8 @@
     "declaration": true,
     "declarationMap": true,
     "paths": {
-      "@sdk/*": ["./src/sdk", "./src/sdk/*"],
+      "@sdk": ["./src/sdk"],
+      "@sdk/*": ["./src/sdk/*"],
       "$types": ["./src/types"],
       "$types/*": ["./src/types/*"],
       "@helper": ["./src/helper"],

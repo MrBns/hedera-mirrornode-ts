@@ -6,11 +6,13 @@ export default defineConfig({
       format: "esm",
       syntax: "es2021",
       dts: true,
+      bundle: false,
       // bundle: false,
     },
     {
       format: "cjs",
       syntax: "es2021",
+      bundle: false,
     },
   ],
   output: {
@@ -22,10 +24,16 @@ export default defineConfig({
       root: "./publish/dist",
     },
   },
+  // source: {
+  //   entry: {
+  //     index: "./src/index.ts",
+  //     "sdk/index": "./src/sdk/index.ts",
+  //   },
+  // },
   source: {
+    exclude: ["./src/openapi/openapi.yml"],
     entry: {
-      index: "./src/index.ts",
-      "sdk/index": "./src/sdk/index.ts",
+      index: "./src/**/*.{ts,js,css}",
     },
   },
 });

@@ -39,9 +39,14 @@ async function runCommand(cmd) {
 
 const cwd = process.cwd();
 
-await runCommand("npm run package");
+await runCommand("bunx rslib");
 
-console.log("--\n---\n----\n Copying Required Files \n--\n---\n----\n");
+// prettier-ignore
+console.log(
+  ` 
+##### Copying Essential files #####
+`,
+);
 
 const readme = path.resolve(cwd, "./README.md");
 

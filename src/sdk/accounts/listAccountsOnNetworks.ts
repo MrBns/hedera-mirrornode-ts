@@ -1,7 +1,6 @@
-import { fetchByOptionBuilder, safeResponseOutput } from "../../helper/fetcher";
-import { QueryOptionBuilder } from "../../helper/query_options";
-import type { mirronode } from "../../types";
-import type { SdkResponse } from "../../types/response";
+import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
+import { QueryOptionBuilder } from "@helper/query_options";
+import type { mirronode } from "$types";
 
 type Options = {
   /**
@@ -33,9 +32,7 @@ type Options = {
   [property: string]: unknown;
 };
 
-export function listAccountOnNetwork(
-  option: QueryOptionBuilder<Options>,
-): SdkResponse<mirronode.AccountsResponse> {
+export function listAccountOnNetwork(option: QueryOptionBuilder<Options>) {
   const opBuilder = new QueryOptionBuilder(option);
 
   return fetchByOptionBuilder("/api/v1/accounts", opBuilder).then((res) =>

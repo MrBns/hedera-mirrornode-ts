@@ -1,7 +1,6 @@
-import type { mirronode } from "$types";
-import type { SdkResponse } from "$types/response";
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder, type QueryOptions } from "@helper/query_options";
+import type { mirronode } from "$types";
 
 type Options = {
   /**
@@ -30,7 +29,7 @@ type Options = {
 export async function getNftsForAccountInfo(
   address: string,
   option: QueryOptions<Options>,
-): SdkResponse<mirronode.Nfts> {
+) {
   const opBuilder = new QueryOptionBuilder(option);
 
   const res = await fetchByOptionBuilder(

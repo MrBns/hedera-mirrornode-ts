@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type Error = {
-  _status?: {
+  _status: {
     messages?: Array<{
       /**
        * Error message in hexadecimal

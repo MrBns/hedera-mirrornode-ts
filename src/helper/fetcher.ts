@@ -1,4 +1,6 @@
-import type { SdkReponseUnexpcted } from "$types/response";
+import type { mirronode } from "$types";
+import { MirrorNodeReponse } from "$types/response";
+
 import type { QueryOptionBuilder } from "./query_options";
 
 export function fetchByOptionBuilder<T>(
@@ -11,12 +13,13 @@ export function fetchByOptionBuilder<T>(
   return fetch(url, options.requestOption);
 }
 
-export async function safeResponseOutput<T>(res: Response) {
+export async function safeResponseOutput<T extends object>(res: Response) {
   if (res.ok) {
-    return res.json() as Promise<T>;
+    return new MirrorNodeReponse<T>((await res.json()) as T, "ok");
   } else {
-    return {
-      error: Error(res.statusText || `server replied with ${res.status}`),
-    } as SdkReponseUnexpcted;
+    return new MirrorNodeReponse<mirronode.Error>(
+      (await res.json()) as mirronode.Error,
+      "bad",
+    );
   }
 }

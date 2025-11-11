@@ -1,5 +1,5 @@
 import type { mirronode } from "$types";
-import type { SdkResponse } from "$types/response";
+
 import { fetchByOptionBuilder, safeResponseOutput } from "../../helper/fetcher";
 import {
   QueryOptionBuilder,
@@ -37,10 +37,8 @@ type Options = {
   [property: string]: unknown;
 };
 
-export async function listTransaction(
-  option?: QueryOptions<Options>,
-): SdkResponse<mirronode.TransactionsResponse> {
+export async function listTransaction(option?: QueryOptions<Options>) {
   const opBuilder = new QueryOptionBuilder(option);
   const res = await fetchByOptionBuilder("/api/v1/transactions", opBuilder);
-  return safeResponseOutput(res);
+  return safeResponseOutput<mirronode.TransactionsResponse>(res);
 }

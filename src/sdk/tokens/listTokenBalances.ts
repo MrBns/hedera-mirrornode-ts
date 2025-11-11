@@ -1,9 +1,20 @@
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder, type QueryOptions } from "@helper/query_options";
 import type { mirronode } from "$types";
-import { MirrorNodeReponse } from "$types/response";
 
-type Options = {
+export interface Options {
+  /**
+   * The optional balance value to compare against
+   */
+  "account.balance"?: string;
+  /**
+   * The ID of the account to return information for
+   */
+  "account.id"?: string;
+  /**
+   * The account's public key to compare against
+   */
+  "account.publickey"?: string;
   /**
    * The maximum number of items to return
    */
@@ -18,24 +29,24 @@ type Options = {
    * a simple way to convert a date to the 'seconds' part of the Unix time.
    */
   timestamp?: string[];
-  /**
-   * If provided and set to false transactions will not be included in the response
-   */
-  transactions?: boolean;
-  transactiontype?: mirronode.TransactionTypes;
   [property: string]: unknown;
-};
+}
 
-export async function getAccountInfoByAddress(
-  idOrAddress: string,
+/**
+ * Returns a list of token balances given the id. This represents the Token supply distribution across the network
+ * @param id
+ * @param options
+ */
+export async function listTokenBalancesById(
+  tokenId: string,
   options?: QueryOptions<Options>,
 ) {
   const opBuilder = new QueryOptionBuilder(options);
 
   const res = await fetchByOptionBuilder(
-    `/api/v1/accounts/${idOrAddress}`,
+    `/api/v1/tokens/${tokenId}/balances`,
     opBuilder,
   );
 
-  return safeResponseOutput<mirronode.AccountBalanceTransactions>(res);
+  return safeResponseOutput<mirronode.TokenBalancesResponse>(res);
 }

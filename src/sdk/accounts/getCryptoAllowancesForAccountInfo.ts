@@ -1,7 +1,6 @@
-import type { mirronode } from "$types";
-import type { SdkResponse } from "$types/response";
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder, type QueryOptions } from "@helper/query_options";
+import type { mirronode } from "$types";
 
 type Option = {
   /**
@@ -22,12 +21,12 @@ type Option = {
 export async function getCryptoAllowancesForAccountInfo(
   idOrAliasOrEvmAddress: string,
   options: QueryOptions<Option>,
-): SdkResponse<mirronode.CryptoAllowancesResponse> {
+) {
   const opBuilder = new QueryOptionBuilder(options);
 
   const res = await fetchByOptionBuilder(
     `/accounts/${idOrAliasOrEvmAddress}/crypto-allowances`,
     opBuilder,
   );
-  return safeResponseOutput(res);
+  return safeResponseOutput<mirronode.CryptoAllowancesResponse>(res);
 }

@@ -1,27 +1,62 @@
-export type SdkResponse404Details = {
-  _stauts: {
-    messages: {
-      data: string | null;
-      detail: string | null;
-      message: string;
-    }[];
-  };
-};
+import type { mirronode } from "$types";
 
-export type SdkResponse403Details = {
-  _stauts: {
-    messages: {
-      data: string | null;
-      detail: string | null;
-      message: string;
-    }[];
-  };
-};
+export class MirrorNodeReponse<T> {
+  data?: T | mirronode.Error;
+  tag: "" | "ok" | "bad";
+  constructor(data: T, tag: typeof this.tag = "") {
+    this.data = data;
+    this.tag = tag;
+  }
 
-export type SdkReponseUnexpcted = {
-  error: Error;
-};
+  isOk(): this is MirrorNodeReponse<T> {
+    return this.tag === "ok";
+  }
+  isBad(): this is MirrorNodeReponse<mirronode.Error> {
+    return this.tag === "bad";
+  }
+}
 
-export type SdkResponse<T> = Promise<
-  SdkResponse404Details | SdkResponse403Details | SdkReponseUnexpcted | T
->;
+// export class MirrorNodeBadResponse extends MirrorNodeReponse<null> {
+//   error: mirronode.Error;
+
+//   constructor(err: mirronode.Error) {
+//     super(null, "bad");
+//     this.error = err;
+//   }
+// }
+// export class MirrorNodeUnknownResponse extends MirrorNodeReponse<null> {
+//   error: unknown;
+
+//   constructor(err: unknown) {
+//     super(null, "unknown");
+//     this.error = err;
+//   }
+// }
+
+// export class MirrorNodeUnExpectedResponse extends MirrorNodeReponse<null> {
+//   error: Error;
+
+//   constructor(error: Error) {
+//     super(null, "unexpected");
+//     this.error = error;
+//   }
+// }
+
+// export class MirrorNodeOkResponse<T> extends MirrorNodeReponse<T> {
+//   data: T;
+
+//   constructor(data: T) {
+//     super(data, "ok");
+//     this.data = data;
+//   }
+// }
+
+// export type MirrorNodeResponsesPromiseType<T> =
+//   | MirrorNodeBadResponse
+//   | MirrorNodeUnExpectedResponse
+//   | MirrorNodeOkResponse<T>
+//   | MirrorNodeUnknownResponse;
+
+// export type MirrorNodeBadResponseTypePromise<T> = Promise<
+//   MirrorNodeResponsesType<T>
+// >;
