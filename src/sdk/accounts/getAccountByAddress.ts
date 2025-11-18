@@ -1,6 +1,6 @@
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder, type QueryOptions } from "@helper/query_options";
-import type { mirronode } from "$types";
+import type { mirrornode } from "$types";
 import { MirrorNodeReponse } from "$types/response";
 
 type Options = {
@@ -11,7 +11,7 @@ type Options = {
   /**
    * The order in which items are listed
    */
-  order?: mirronode.orderQueryParam;
+  order?: mirrornode.orderQueryParam;
   /**
    * The consensus timestamp as a Unix timestamp in seconds.nanoseconds format with an
    * optional comparison operator. See [unixtimestamp.com](https://www.unixtimestamp.com/) for
@@ -22,7 +22,7 @@ type Options = {
    * If provided and set to false transactions will not be included in the response
    */
   transactions?: boolean;
-  transactiontype?: mirronode.TransactionTypes;
+  transactiontype?: mirrornode.TransactionTypes;
   [property: string]: unknown;
 };
 
@@ -37,5 +37,5 @@ export async function getAccountInfoByAddress(
     opBuilder,
   );
 
-  return safeResponseOutput<mirronode.AccountBalanceTransactions>(res);
+  return safeResponseOutput<mirrornode.AccountBalanceTransactions>(res);
 }

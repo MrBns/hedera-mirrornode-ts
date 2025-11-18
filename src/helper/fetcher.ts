@@ -1,4 +1,4 @@
-import type { mirronode } from "$types";
+import type { mirrornode } from "$types";
 import { MirrorNodeReponse } from "$types/response";
 
 import type { QueryOptionBuilder } from "./query_options";
@@ -17,8 +17,8 @@ export async function safeResponseOutput<T extends object>(res: Response) {
   if (res.ok) {
     return new MirrorNodeReponse<T>((await res.json()) as T, "ok");
   } else {
-    return new MirrorNodeReponse<mirronode.Error>(
-      (await res.json()) as mirronode.Error,
+    return new MirrorNodeReponse<mirrornode.Error>(
+      (await res.json()) as mirrornode.Error,
       "bad",
     );
   }

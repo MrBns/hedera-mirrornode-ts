@@ -1,6 +1,6 @@
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder, type QueryOptions } from "@helper/query_options";
-import type { mirronode } from "$types";
+import type { mirrornode } from "$types";
 
 export interface Options {
   /**
@@ -23,5 +23,5 @@ export async function getTokenInfoById(
     opBuilder,
   );
 
-  return safeResponseOutput<mirronode.TokenInfo>(res);
+  return safeResponseOutput<mirrornode.TokenInfo>(res);
 }

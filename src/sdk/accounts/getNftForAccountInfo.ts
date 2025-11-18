@@ -1,6 +1,6 @@
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder, type QueryOptions } from "@helper/query_options";
-import type { mirronode } from "$types";
+import type { mirrornode } from "$types";
 
 type Options = {
   /**
@@ -10,7 +10,7 @@ type Options = {
   /**
    * The order in which items are listed
    */
-  order?: mirronode.orderQueryParam;
+  order?: mirrornode.orderQueryParam;
   /**
    * The nft serial number (64 bit type). Requires a tokenId value also be populated.
    */
@@ -37,5 +37,5 @@ export async function getNftsForAccountInfo(
     opBuilder,
   );
 
-  return safeResponseOutput<mirronode.Nfts>(res);
+  return safeResponseOutput<mirrornode.Nfts>(res);
 }

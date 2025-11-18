@@ -1,4 +1,4 @@
-import type { mirronode } from "$types";
+import type { mirrornode } from "$types";
 
 import { fetchByOptionBuilder, safeResponseOutput } from "../../helper/fetcher";
 import {
@@ -18,7 +18,7 @@ type Options = {
   /**
    * The order in which items are listed
    */
-  order?: mirronode.orderQueryParam;
+  order?: mirrornode.orderQueryParam;
   /**
    * The transaction success type.
    */
@@ -29,16 +29,16 @@ type Options = {
    * a simple way to convert a date to the 'seconds' part of the Unix time.
    */
   timestamp?: string[];
-  transactiontype?: mirronode.transactionTypeQueryParam;
+  transactiontype?: mirrornode.transactionTypeQueryParam;
   /**
    * The transaction account balance modification type.
    */
-  type?: mirronode.BalanceModificationType;
+  type?: mirrornode.BalanceModificationType;
   [property: string]: unknown;
 };
 
 export async function listTransaction(option?: QueryOptions<Options>) {
   const opBuilder = new QueryOptionBuilder(option);
   const res = await fetchByOptionBuilder("/api/v1/transactions", opBuilder);
-  return safeResponseOutput<mirronode.TransactionsResponse>(res);
+  return safeResponseOutput<mirrornode.TransactionsResponse>(res);
 }

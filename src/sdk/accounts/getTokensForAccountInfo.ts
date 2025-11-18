@@ -1,6 +1,6 @@
-import type { mirronode } from "$types";
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder, type QueryOptions } from "@helper/query_options";
+import type { mirrornode } from "$types";
 
 type Options = {
   /**
@@ -10,7 +10,7 @@ type Options = {
   /**
    * The order in which items are listed
    */
-  order?: mirronode.orderQueryParam;
+  order?: mirrornode.orderQueryParam;
   /**
    * The ID of the token to return information for
    */
@@ -29,5 +29,5 @@ export async function getTokensForAccountInfo(
     opBuilder,
   );
 
-  return safeResponseOutput<mirronode.Tokens>(res);
+  return safeResponseOutput<mirrornode.Tokens>(res);
 }

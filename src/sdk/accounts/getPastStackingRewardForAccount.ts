@@ -1,6 +1,6 @@
-import type { mirronode } from "$types";
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder, type QueryOptions } from "@helper/query_options";
+import type { mirrornode } from "$types";
 
 type Options = {
   /**
@@ -10,7 +10,7 @@ type Options = {
   /**
    * The order in which items are listed
    */
-  order?: mirronode.orderQueryParam;
+  order?: mirrornode.orderQueryParam;
   /**
    * The consensus timestamp as a Unix timestamp in seconds.nanoseconds format with an
    * optional comparison operator. See [unixtimestamp.com](https://www.unixtimestamp.com/) for
@@ -31,5 +31,5 @@ export async function getPastStackingRewardForAccount(
     opBuilder,
   );
 
-  return safeResponseOutput<mirronode.StakingRewardsResponse>(res);
+  return safeResponseOutput<mirrornode.StakingRewardsResponse>(res);
 }

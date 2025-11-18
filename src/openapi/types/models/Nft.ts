@@ -21,5 +21,5 @@ export type Nft = {
   modified_timestamp: TimestampNullable;
   serial_number: number;
   spender: EntityId | null;
-  token_id: EntityId;
+  token_id: string;
 };

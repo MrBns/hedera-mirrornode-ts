@@ -1,6 +1,6 @@
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder, type QueryOptions } from "@helper/query_options";
-import type { mirronode } from "$types";
+import type { mirrornode } from "$types";
 
 export interface Options {
   /**
@@ -22,7 +22,7 @@ export interface Options {
   /**
    * The order in which items are listed
    */
-  order?: mirronode.orderQueryParam;
+  order?: mirrornode.orderQueryParam;
   /**
    * The public key to compare against
    */
@@ -43,7 +43,7 @@ export async function listTokens(options?: QueryOptions<Options>) {
   const opBuilder = new QueryOptionBuilder();
 
   const res = await fetchByOptionBuilder("/api/v1/tokens", opBuilder);
-  return safeResponseOutput<mirronode.TokensResponse>(res);
+  return safeResponseOutput<mirrornode.TokensResponse>(res);
 }
 
 /**
@@ -62,5 +62,5 @@ export async function listTokensByAccountId(
   });
 
   const res = await fetchByOptionBuilder("/api/v1/tokens", opBuilder);
-  return safeResponseOutput<mirronode.TokensResponse>(res);
+  return safeResponseOutput<mirrornode.TokensResponse>(res);
 }

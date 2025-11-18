@@ -192,4 +192,5 @@
 //   export type TransactionTypes = gen.TransactionTypes;
 // }
 
-export * as mirronode from "../openapi/types/index";
+export * as mirrornode from "../openapi/types/index";
+export * from "./response";

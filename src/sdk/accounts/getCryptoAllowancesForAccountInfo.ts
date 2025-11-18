@@ -1,6 +1,6 @@
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder, type QueryOptions } from "@helper/query_options";
-import type { mirronode } from "$types";
+import type { mirrornode } from "$types";
 
 type Option = {
   /**
@@ -10,7 +10,7 @@ type Option = {
   /**
    * The order in which items are listed
    */
-  order?: mirronode.orderQueryParam;
+  order?: mirrornode.orderQueryParam;
   /**
    * The ID of the spender to return information for
    */
@@ -28,5 +28,5 @@ export async function getCryptoAllowancesForAccountInfo(
     `/accounts/${idOrAliasOrEvmAddress}/crypto-allowances`,
     opBuilder,
   );
-  return safeResponseOutput<mirronode.CryptoAllowancesResponse>(res);
+  return safeResponseOutput<mirrornode.CryptoAllowancesResponse>(res);
 }

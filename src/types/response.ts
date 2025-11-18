@@ -1,7 +1,7 @@
-import type { mirronode } from "$types";
+import type { mirrornode } from "$types";
 
 export class MirrorNodeReponse<T> {
-  data?: T | mirronode.Error;
+  data?: T | mirrornode.Error;
   tag: "" | "ok" | "bad";
   constructor(data: T, tag: typeof this.tag = "") {
     this.data = data;
@@ -11,7 +11,7 @@ export class MirrorNodeReponse<T> {
   isOk(): this is MirrorNodeReponse<T> {
     return this.tag === "ok";
   }
-  isBad(): this is MirrorNodeReponse<mirronode.Error> {
+  isBad(): this is MirrorNodeReponse<mirrornode.Error> {
     return this.tag === "bad";
   }
 }

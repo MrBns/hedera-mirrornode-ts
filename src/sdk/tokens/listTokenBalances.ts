@@ -1,6 +1,6 @@
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder, type QueryOptions } from "@helper/query_options";
-import type { mirronode } from "$types";
+import type { mirrornode } from "$types";
 
 export interface Options {
   /**
@@ -22,7 +22,7 @@ export interface Options {
   /**
    * The order in which items are listed
    */
-  order?: mirronode.orderQueryParam;
+  order?: mirrornode.orderQueryParam;
   /**
    * The consensus timestamp as a Unix timestamp in seconds.nanoseconds format with an
    * optional comparison operator. See [unixtimestamp.com](https://www.unixtimestamp.com/) for
@@ -48,5 +48,5 @@ export async function listTokenBalancesById(
     opBuilder,
   );
 
-  return safeResponseOutput<mirronode.TokenBalancesResponse>(res);
+  return safeResponseOutput<mirrornode.TokenBalancesResponse>(res);
 }

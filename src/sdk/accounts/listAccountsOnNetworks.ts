@@ -1,6 +1,6 @@
 import { fetchByOptionBuilder, safeResponseOutput } from "@helper/fetcher";
 import { QueryOptionBuilder } from "@helper/query_options";
-import type { mirronode } from "$types";
+import type { mirrornode } from "$types";
 
 type Options = {
   /**
@@ -28,7 +28,7 @@ type Options = {
   /**
    * The order in which items are listed
    */
-  order?: mirronode.orderQueryParam;
+  order?: mirrornode.orderQueryParam;
   [property: string]: unknown;
 };
 
@@ -36,6 +36,6 @@ export function listAccountOnNetwork(option: QueryOptionBuilder<Options>) {
   const opBuilder = new QueryOptionBuilder(option);
 
   return fetchByOptionBuilder("/api/v1/accounts", opBuilder).then((res) =>
-    safeResponseOutput<mirronode.AccountsResponse>(res),
+    safeResponseOutput<mirrornode.AccountsResponse>(res),
   );
 }
